@@ -11,6 +11,10 @@ import java.io.Serializable;
 
 public class Car implements Serializable {
 
+    @SerializedName("id")
+    @Expose
+    private int id;
+
     @SerializedName("manufacturer")
     @Expose
     private String manufacturer;
@@ -86,6 +90,14 @@ public class Car implements Serializable {
     @SerializedName("imageUrls")
     @Expose
     private String [] imageUrls;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getManufacturer () {
         return manufacturer;

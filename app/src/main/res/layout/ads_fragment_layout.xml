@@ -5,11 +5,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="You have no liked cars!"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="36sp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/ads_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/ad_row_layout"/>
+        android:visibility="invisible"
+        tools:listitem="@layout/ad_row_layout" />
 
 </FrameLayout>
 

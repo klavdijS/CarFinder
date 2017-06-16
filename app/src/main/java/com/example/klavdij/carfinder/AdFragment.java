@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -29,6 +31,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class AdFragment extends Fragment {
 
+    protected TextView message;
     protected RecyclerView recyclerView;
     protected RecyclerView.LayoutManager layoutManager;
     protected CarAdapter carAdapter;
@@ -47,6 +50,8 @@ public class AdFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.ads_fragment_layout,container,false);
 
         mContext = getActivity().getApplicationContext();
+
+        message = (TextView) rootView.findViewById(R.id.message);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.ads_recycler_view);
 
         layoutManager = new LinearLayoutManager(getActivity());
@@ -57,6 +62,14 @@ public class AdFragment extends Fragment {
         recyclerView.setAdapter(new CarAdapter(mContext,carList));
 
         carList = DataHolder.getInstance().getLikedCarList();
+
+        if (carList.size() > 0) {
+            message.setVisibility(View.INVISIBLE);
+            recyclerView.setVisibility(View.VISIBLE);
+        } else {
+            message.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.INVISIBLE);
+        }
 
         carAdapter = new CarAdapter(mContext,carList);
         recyclerView.setAdapter(carAdapter);

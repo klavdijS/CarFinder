@@ -27,6 +27,26 @@ class DataHolder {
     }
 
     public void addLikedCar (Car car) {
-        likedCarList.add(car);
+        boolean isAdded = false;
+        for (int i = 0; i < likedCarList.size(); i++) {
+            if (car.getId() == likedCarList.get(i).getId()) {
+                isAdded = true;
+                break;
+            }
+        }
+        if (isAdded) {
+            return;
+        } else {
+            likedCarList.add(car);
+        }
+    }
+
+    public void deleteCar (Car car) {
+        for (int i = 0; i < likedCarList.size(); i++) {
+            if (car.getId() == likedCarList.get(i).getId()) {
+                likedCarList.remove(i);
+                return;
+            }
+        }
     }
 }
